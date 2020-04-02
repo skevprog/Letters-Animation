@@ -10,9 +10,12 @@
 
 <body>
     <div>
-        <input type="text" id="text" value="" placeholder="Write something">
-        <button onclick="showValue()">Animate!</button>
-        <button onclick="reset()">Reset Word!</button>
+        <div class="input-container">
+            <input type="text" id="text" value="" class="input" placeholder="Write something">
+            <div class="input-underline"></div>
+        </div>
+        <button onclick="showValue()" class="animate btn">Animate!</button>
+        <button onclick="reset()" class="btn">Reset Word!</button>
     </div>
     <h1 class="title">
     </h1>

@@ -32,4 +32,60 @@ span {
     line-height: 1em;
     display: inline-block;
     white-space: pre;
-};
+}
+
+.input {
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    background-color: transparent;
+    padding:10px 10px 10px 5px;
+    color: #ffffff;
+    width: 100%;
+}
+
+input:focus,
+button:focus {
+    outline: none;
+}
+
+.input::placeholder {
+    color: #ffffffcb;
+}
+
+.btn {
+    padding: 1em;
+    background: transparent;
+    color: #ffffff;
+    border: 1px white solid;
+    font-weight: 700;
+    font-size: 0.4em;
+    margin-top: 1rem;
+    transition: all .2s ease;
+}
+
+.btn:hover {
+    color: #000000;
+    background-color: #ffffff;
+    letter-spacing: 3px;
+}
+
+.input-container {
+    position: relative;
+    margin: 0 auto;
+    width: 15%;
+}
+
+.input-underline {
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    width: 0%;
+    background-color: #ffffff;
+    bottom: 0;
+    left: 0;
+    transition: all 0.5s ease;
+}
+
+input:focus + .input-underline {
+    width: 100%;
+}

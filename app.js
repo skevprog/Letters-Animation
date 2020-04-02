@@ -20,12 +20,13 @@ function animation(splitText) {
 
 function reset() {
   text.textContent = '';
+  inputValue.value = '';
   char = 0;
 }
 
 function showValue() {
-  reset();
   const word = inputValue.value;
+  if (!word) return;
   const splitText = word.split('');
   splitText.map(letter => (text.innerHTML += `<span>${letter}</span>`));
   timer = setInterval(() => animation(splitText), 50);
