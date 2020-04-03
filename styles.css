@@ -54,16 +54,15 @@ button:focus {
 
 .btn {
     padding: 1em;
-    background: transparent;
+    background-color: transparent;
     color: #ffffff;
     border: 1px white solid;
     font-weight: 700;
     font-size: 0.4em;
     margin-top: 1rem;
-    transition: all .2s ease;
 }
 
-.btn:hover {
+.btn:hover:enabled {
     color: #000000;
     background-color: #ffffff;
     letter-spacing: 3px;
@@ -88,4 +87,14 @@ button:focus {
 
 input:focus + .input-underline {
     width: 100%;
+}
+
+.hide {
+    opacity: 0;
+    transition: all .5s ease;
+}
+
+.show {
+    opacity: 1;
+    transition: all .5s ease;
 }

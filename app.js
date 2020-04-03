@@ -1,12 +1,32 @@
 const text = document.querySelector('.title');
-const inputValue = document.getElementById('text');
+const input = document.getElementById('text');
+const btn = document.getElementById('animateBtn');
+const btnClass = btn.classList;
+
+const SHOW = 'show';
+const HIDE = 'hide';
 
 let char = 0;
 let timer;
 
+function animateBtn(type) {
+  const btnAnimationObj = {
+    show() {
+      btnClass.remove(SHOW);
+      btnClass.add(HIDE);
+    },
+    hide() {
+      btnClass.remove(HIDE);
+      btnClass.add(SHOW);
+    },
+  };
+  return btnAnimationObj[type]();
+}
+
 function complete() {
   clearInterval(timer);
   timer = null;
+  input.value = '';
 }
 
 function animation(splitText) {
@@ -15,19 +35,30 @@ function animation(splitText) {
   char += 1;
   if (char === splitText.length) {
     complete();
+    animateBtn(SHOW);
   }
 }
 
-function reset() {
-  text.textContent = '';
-  inputValue.value = '';
-  char = 0;
-}
-
 function showValue() {
-  const word = inputValue.value;
+  const word = input.value;
   if (!word) return;
+  if (text.innerHTML) {
+    char = 0;
+    text.innerHTML = '';
+  }
   const splitText = word.split('');
   splitText.map(letter => (text.innerHTML += `<span>${letter}</span>`));
   timer = setInterval(() => animation(splitText), 50);
 }
+
+if (!input.value) {
+  animateBtn(SHOW);
+}
+
+input.addEventListener('input', () => {
+  if (input.value.length <= 0) {
+    animateBtn(SHOW);
+  } else {
+    animateBtn(HIDE);
+  }
+});
