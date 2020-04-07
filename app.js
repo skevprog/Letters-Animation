@@ -12,12 +12,10 @@ let timer;
 function animateBtn(type) {
   const btnAnimationObj = {
     show() {
-      btnClass.remove(SHOW);
-      btnClass.add(HIDE);
+      btnClass.replace(SHOW, HIDE);
     },
     hide() {
-      btnClass.remove(HIDE);
-      btnClass.add(SHOW);
+      btnClass.replace(HIDE, SHOW);
     },
   };
   return btnAnimationObj[type]();
