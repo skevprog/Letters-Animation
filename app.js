@@ -1,6 +1,6 @@
 const text = document.querySelector('.title');
 const input = document.getElementById('text');
-const btn = document.getElementById('animateBtn');
+const btn = document.getElementById('animationBtn');
 const btnClass = btn.classList;
 
 const SHOW = 'show';
@@ -9,7 +9,7 @@ const HIDE = 'hide';
 let char = 0;
 let timer;
 
-function animateBtn(type) {
+const animateBtn = type => {
   const btnAnimationObj = {
     show() {
       btnClass.replace(SHOW, HIDE);
@@ -19,15 +19,15 @@ function animateBtn(type) {
     },
   };
   return btnAnimationObj[type]();
-}
+};
 
-function complete() {
+const complete = () => {
   clearInterval(timer);
   timer = null;
   input.value = '';
-}
+};
 
-function animation(splitText) {
+const animation = splitText => {
   const wordLetter = text.querySelectorAll('span')[char];
   wordLetter.classList.add('fade');
   char += 1;
@@ -35,9 +35,9 @@ function animation(splitText) {
     complete();
     animateBtn(SHOW);
   }
-}
+};
 
-function showValue() {
+const showValue = () => {
   const word = input.value;
   if (!word) return;
   if (text.innerHTML) {
@@ -47,7 +47,7 @@ function showValue() {
   const splitText = word.split('');
   splitText.map(letter => (text.innerHTML += `<span>${letter}</span>`));
   timer = setInterval(() => animation(splitText), 50);
-}
+};
 
 if (!input.value) {
   animateBtn(SHOW);
